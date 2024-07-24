@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Expenses</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="index.css" />
+
+</head>
+<body>
+
+    <header>
+        
+        <h1>Expense Tracker Manager-Edit</h1>
+
+   
+    <nav class="nav-bar">
+        
+        <a href ="login.html">Login</a>
+        <a href ="register.html">Registration</a>
+       <a href ="view_expenses.html">View Expenses</a>
+        <a href ="#">Add Expenses</a>
+        <a href ="edit_expenses.html">Edit Expenses</a>
+        <a href ="index.html">Home</a>
+    </nav>
+        
+    </header>
+
+   <!--   <button  class = "button" onclick="addRow()">Add Expenses</button>
+  <button onclick="addColumn()">Add Column</button>-->
+  <div class="expense-table"> 
+    <table> 
+        <thead> 
+            <tr> 
+                <th>Date</th>
+                <th>Expense Name</th> 
+                <th>Amount</th> 
+                <th>Action</th>
+        
+            </tr> 
+        </thead> 
+        
+    </table> 
+     
+    <div class="total-amount"> 
+        <strong>Total:</strong> 
+        <strong>KSH<span>0</span> </strong>
+    </div> 
+
+    <script>
+
+//Add rows
+        function addRow() {
+            const table = document.getElementById('expense-table').getElementsByTagName('tbody')[0];
+            const newRow = table.insertRow();
+            const numCols = table.rows[0].cells.length;
+            for (let i = 0; i < numCols; i++) {
+                const newCell = newRow.insertCell();
+                newCell.contentEditable = "true";
+            }
+        }
+
+    </script>
+   
+    
+</body>
+</html>

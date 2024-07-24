@@ -6,23 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Expense Tracker</title>
     <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="style.css" />
   </head>
-  <body class="background">
-    <h1>Expense Tracker</h1>
+  <body>
+
+    <header>
+        
+        <h1>Expense Tracker Manager</h1>
+       
+    <nav class="nav-bar">
+        
+           <a href ="login.html">Login</a>
+            <a href ="register.html">Registration</a>
+           <a href ="view_expenses.html">View Expenses</a>
+           <a href ="#">Add Expenses</a>
+            <a href ="edit_expenses.html">Edit Expenses</a>
+            <a href ="#">Home</a>
+           </nav>
+    </header>
+
+    <h2 class="heading">Welcome to Your Expense Tracker</h2>
+    <p>Track your expenses easily and efficiently using our simple APP.</p>
 
     <main>
       <header>
         <div>
           <h5>Total Balance</h5>
-          <span id="balance">$0.00</span>
+          <span id="balance">Ksh 0.00</span>
         </div>
         <div>
           <h5>Income</h5>
-          <span id="income">$0.00</span>
+          <span id="income">Ksh 0.00</span>
         </div>
         <div>
           <h5>Expense</h5>
-          <span id="expense">$0.00</span>
+          <span id="expense">Ksh 0.00</span>
         </div>
       </header>
 
@@ -40,14 +58,15 @@
             <label for="type">
               <input type="checkbox" name="type" id="type" />
               <div class="option">
+                <span >Income</span>
                 <span>Expense</span>
-                <span>Income</span>
+                
               </div>
             </label>
           </div>
           <div>
             <label for="name">Name</label>
-            <input type="text" name="name" required />
+            <input type="text" name="name" required placeholder="Enter expense or Income" />
           </div>
           <div>
             <label for="amount">Amount</label>
@@ -62,13 +81,19 @@
           </div>
           <div>
             <label for="date">Date</label>
-            <input type="date" name="date" required />
+            <input type="date" name="date"  />
           </div>
           <button type="submit">Submit</button>
-        </form>
+         </form>
+         
+        <div class="home-register">
+        <span style="color: #657575">Do you already have an account?</span><br>
+          <a href="login.html"><button id="register-link">Log In here</button></a>OR
+          <a href="register.html"><button id="register-link" >Register here</button></a>
+      </div>
       </section>
     </main>
 
-    <script src="script.js"></script>
+    <script src="expense.js"></script>
   </body>
 </html>
