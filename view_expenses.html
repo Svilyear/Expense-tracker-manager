@@ -1,72 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View Expenses</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="index.css" />
-</head>
-<body>
-
-    <header>
-        
-        <h1>Expense Tracker Manager-View Expenses</h1>
-
-   
-    <nav class="nav-bar">
-        
-        <a href ="login.html">Login</a>
-        <a href ="register.html">Registration</a>
-       <a href ="view_expenses.html">View Expenses</a>
-        <a href ="#">Add Expenses</a>
-        <a href ="edit_expenses.html">Edit Expenses</a>
-        <a href ="index.html">Home</a>
-           </nav>
-        
-    </header>
-    <table>
-        <!--<button  class = "button" onclick="addRow()">Add Expenses</button>
-     <button onclick="addColumn()">Add Column</button>-->
-        <table id="expense-table">
-            <thead>
-                <tr>
-            <th>Date</th>
-            <th>Item</th>
-            <th>Category</th>
-            <th>Amount</th>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Expense Tracker</title>
+        <link rel="stylesheet" href="css/index.css" />
+        <link rel="stylesheet" href="css/style.css" />
+      </head>
+      <body>
+    
+        <header>
             
-        </tr>
-    </thead>
-    <tbody>
-           <tr>
-            <td contenteditable="false">2024-06-25</td>
-            <td contenteditable="false">Housing</td>
-            <td contenteditable="false">Rent</td>
-            <td contenteditable="false">10,000</td>
+            <h1 >Expense Tracker Manager</h1>
            
-            </tr>
+           
+            <nav class="nav-bar">
+                <a href ="index.html">Home</a>
+                <a href ="view_expenses.html">View Expenses</a>
+                <a href ="index.html">Add Expenses</a>
+                 <a href ="#">Edit Expenses</a>
+                  <a href ="register.html">Registration</a>
+                <a href ="login.html">Login</a>
+                </nav>
+        </header>
+     
     
-            <tr>
-                <td contenteditable="false">2024-06-25</td>
-                <td contenteditable="false">Education</td>
-                <td contenteditable="false">Fees</td>
-                <td contenteditable="false">8,000</td>
-               
-                </tr>
-    
-                <tr>
-                    <td contenteditable="false">2024-06-25</td>
-                    <td contenteditable="false">Car</td>
-                    <td contenteditable="false">Fuel</td>
-                    <td contenteditable="false">3,000</td>
-                   
-                    </tr>
-        </tbody>
-        </table>
-        <div class="total-amount"> 
-            <strong>Total:</strong> 
-            <strong>KSH<span>0</span> </strong>
+        <div class="container"> 
+            
+            <form id="expense-form"> 
+            <div class="expense-date"> 
+                 <h1>Expenditure Details</h1> 
+                 <p> You can view all your Expenditure patterns here to help make informed decision</p>
+            </div>
+                
+                
+            </form> 
+            <div class="expense-table"> 
+                <table> 
+                    <thead> 
+                        <tr> 
+                            <th>Date</th>
+                            <th>Expense Name</th> 
+                            <th>Amount</th> 
+                          
+                        </tr> 
+                    </thead> 
+                    <tbody id="expense-list"></tbody> 
+                </table> 
+                <div class="total-amount"> 
+                    <strong>Total:</strong> 
+                    <strong>KSH<span  id="total-amount">0</span> </strong>
+                </div> 
+            </div> 
         </div> 
+         
+             <script src="js/update_expense_view_script.js"> </script>
+            
 </body>
 </html>
