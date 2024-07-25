@@ -2,7 +2,6 @@ const express = require('express');
 const mysql = require('mysql2');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -40,8 +39,9 @@ db.query(`
   console.log('ExpensesDB table created');
 });
 
-// Get all expenses
-app.get('/api/expensesDB', (req, res) => {
+// Get all expenses route
+//app.get('/api/expensesDB', (req, res) => {
+  app.get('/api/js/expenseDB', (req, res) => {
   db.query('SELECT * FROM expensesDB', (err, results) => {
     if (err) return res.status(500).json({ error: err.message });
     res.json(results);
@@ -49,9 +49,9 @@ app.get('/api/expensesDB', (req, res) => {
 });
 
 // Add a new expense
-app.post('/api/expensesDB', (req, res) => {
+app.post('/api/expenseDB', (req, res) => {
   const { date, name, amount } = req.body;
-  const query = 'INSERT INTO expensesDB (date, name, amount) VALUES (?, ?, ?)';
+  const query = 'INSERT INTO expensesDB ( date, name, amount) VALUES (?, ?, ?)';
   db.query(query, [date, name, amount], (err, results) => {
     if (err) return res.status(500).json({ error: err.message });
     res.status(201).json({ id: results.insertId, date, name, amount });
@@ -59,7 +59,7 @@ app.post('/api/expensesDB', (req, res) => {
 });
 
 // Update an expense
-app.put('/api/expensesDB/:id', (req, res) => {
+app.put('/api/expenseDB/:id', (req, res) => {
   const { date, name, amount } = req.body;
   const query = 'UPDATE expensesDB SET date = ?, name = ?, amount = ? WHERE id = ?';
   db.query(query, [date, name, amount, req.params.id], (err, results) => {
@@ -69,7 +69,7 @@ app.put('/api/expensesDB/:id', (req, res) => {
 });
 
 // Delete an expense
-app.delete('/api/expensesDB/:id', (req, res) => {
+app.delete('/api/expenseDB:id', (req, res) => {
   db.query('DELETE FROM expensesDB WHERE id = ?', [req.params.id], (err, results) => {
     if (err) return res.status(500).json({ error: err.message });
     res.status(204).send();
@@ -81,3 +81,6 @@ app.delete('/api/expensesDB/:id', (req, res) => {
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
 });
+
+
+//This code handles user login and registration
