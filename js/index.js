@@ -52,7 +52,7 @@ function addOrUpdateExpense(event) {
    
     }
          
- 
+    alert( "Expense Added Successfully!"); 
 //alert when expense has been added
 //const Add = document.getElementById("Add");
 //const button = document.getElementById("add_expense");
