@@ -4,6 +4,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 const bcrypt = require('bcrypt');
+const path = require('path');
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -13,11 +14,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 dotenv.config();
 
+let transactions = [];
+
+app.use(express.static(path.join(__dirname, 'public')));
 // MySQL connection setup
 const db = mysql.createConnection({
-    host: '127.0.0.1',
-    user: 'root',
-    password: 'Vill@4171#'
+  host: process.env.host,
+  user: process.env.user,
+  password: process.env.password,
+  database: process.env.database
 
 });
 
@@ -27,7 +32,7 @@ db.connect(err => {
     console.error('Error connecting to MySQL:', err.stack);
     return;
   }
-  console.log('Connected to MySQL');
+  console.log('Connected to MySQL ID:', db.threadId);
 });
 
 // Create expense app users database if it does not exist
@@ -80,7 +85,7 @@ app.post('/api/register', async(req, res) => {
             db.query(newUser, [value], (err, data) => {
                 if(err) return res.status(500).json({ "message": "Something went wrong, User cannot be created! Try again later" });
 
-                return res.status(200).json({ "message": "User created successfully! Something went wrong, User cannot be created! Try again later" })
+                return res.status(200).json({ "message": "User created successfully!" })
             })
         })
         
@@ -111,28 +116,29 @@ app.post('/api/login', async(req, res) => {
 
 
 //Create Expense database if it does not exist
-db.query(`CREATE DATABASE IF NOT EXISTS ExpenseDB`, (err, result) => {
-    if (err) return 
-    console.log('Error creating database');
-    console.log('Database for Users created Successfully');
+//db.query(`CREATE DATABASE IF NOT EXISTS ExpenseDB`, (err, result) => {
+  //  if (err) return 
+    //console.log('Error creating database');
+    //console.log('Database for Users created Successfully');
 
 
 // Create expenses table if it does not exist
 const createExpenseTable = `
 CREATE TABLE IF NOT EXISTS Expense_Data (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    email VARCHAR(255) NOT NULL UNIQUE,
-    username VARCHAR(255) NOT NULL,
-    password VARCHAR(255) NOT NULL
+   Date VARCHAR(255) NOT NULL UNIQUE,
+   Name VARCHAR(255) NOT NULL,
+    Amount VARCHAR(255) NOT NULL,
+    Type
 )
 `;
 db.query(createExpenseTable, (err, result) => {
 if (err) throw err;
-console.log('Expense data table  created successfully!');
+console.log('Expense/Income data table  created successfully!');
 });
-});
+
 // Get all expenses route
-//app.get('/api/expensesDB', (req, res) => {
+
   app.post('/api/index', (req, res) => {
   db.query('SELECT * FROM Expense_data', (err, results) => {
     if (err) return res.status(500).json({ error: err.message });
@@ -142,12 +148,26 @@ console.log('Expense data table  created successfully!');
 
 // Add a new expense
 app.post('/api/index', (req, res) => {
-  const { date, name, amount } = req.body;
-  const query = 'INSERT INTO expense_data ( date, name, amount) VALUES (?, ?, ?)';
-  db.query(query, [date, name, amount], (err, results) => {
+  const { date, name, amount,type} = req.body;
+  const query = 'INSERT INTO expense_data ( date, name, amount,type) VALUES (?, ?, ?)';
+  db.query(query, [date, name, amount, type], (err, results) => {
     if (err) return res.status(500).json({ error: err.message });
     res.status(201).json({ id: results.insertId, date, name, amount });
   });
+  const newTransaction = { date, name, amount, type };
+    transactions.push(newTransaction);
+    res.json(newTransaction);
+});
+
+app.get('/api/totals', (req, res) => {
+  const totalExpenses = transactions
+      .filter(t => t.type === 'expense')
+      .reduce((sum, t) => sum + t.amount, 0);
+  const totalIncome = transactions
+      .filter(t => t.type === 'income')
+      .reduce((sum, t) => sum + t.amount, 0);
+
+  res.json({ totalExpenses, totalIncome });
 });
 
 // Update an expense
@@ -167,6 +187,23 @@ app.delete('/api/edit', (req, res) => {
     if (err) return res.status(500).json({ error: err.message });
     res.status(204).send();
   });
+});
+
+// Serve HTML files
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+app.get('/public/register', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'register.html'));
+});
+
+app.get('/login', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'login.html'));
+});
+
+app.get('/addExpense', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'addExpense.html'));
 });
 
 
