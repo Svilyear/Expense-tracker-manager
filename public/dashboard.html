@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Check if the user is logged in
+        window.onload = function() {
+          const isLoggedIn = localStorage.getItem('isLoggedIn');
+          
+          if (!isLoggedIn || isLoggedIn !== 'true') {
+            // User is not logged in, show login link and hide logout button and registration link
+            document.getElementById('logout-btn').style.display = 'none';
+            document.getElementById('login-link').style.display = 'inline';
+            document.getElementById('register-link').style.display = 'inline';
+          } else {
+            // User is logged in, hide login link and registration link, and show logout button
+            document.getElementById('logout-btn').style.display = 'inline';
+            document.getElementById('login-link').style.display = 'none';
+            document.getElementById('register-link').style.display = 'none';
+          }
+        };
+      </script>
+</head>
+<body style="background-image: url(img/nice\ bg.PNG);">
+    <header>
+        <h1 style="font-size: 30px;padding-left: 100px;">Expense Tracker Manager - Dashboard</h1>
+        <nav class="nav-bar">
+            <a href="index.html">Home</a>
+            <a href="view_expenses.html">View Expenses</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="edit_expenses.html">Edit Expenses</a>
+            <button id="logout-btn" style="display: none; border: none;">Logout</button>
+         
+        </nav>
+    </header>
+
+    <div class="container">
+        <h2>Top Five Expense Summary</h2>
+        <canvas id="expenseChart" ></canvas>
+    </div>
+
+    <footer>
+        <a href="mailto:vitronicstech@gmail.com" target="_blank">Email Us</a> for more information.
+        <p>&copy; 2024 Expense Tracker App. Made with LOVE.</p>
+    </footer>
+
+    <script src="js/chart.js"> </script>
+    <script src="js/logout.js"></script>
+       
+   
+</body>
+</html>

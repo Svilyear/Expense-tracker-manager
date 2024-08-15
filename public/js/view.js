@@ -14,7 +14,7 @@ let editIndex = -1;
 
 // Function to fetch expenses from the server
 function fetchExpenses() {
-    fetch('/api/expenses')
+    fetch('http://localhost:3000/api/expenses')
         .then(response => response.json())
         .then(data => {
             expenses = data;

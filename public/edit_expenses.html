@@ -1,68 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Expense Tracker</title>
-        <link rel="stylesheet" href="css/index.css" />
-        <link rel="stylesheet" href="css/style.css" />
-      </head>
-      <body>
-    
-        <header>
-            
-            <h1 >Expense Tracker Manager</h1>
-           
-        <nav class="nav-bar">
-               <a href ="index.html">Home</a>
-               <a href ="view_expenses.html">View Expenses</a>
-               <a href ="index.html">Add Expenses</a>
-                <a href ="#">Edit Expenses</a>
-                 <a href ="register.html">Registration</a>
-               <a href ="login.html">Login</a>
-               </nav>
-        </header>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Tracker</title>
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    // Check if the user is logged in
+    window.onload = function() {
+      const isLoggedIn = localStorage.getItem('isLoggedIn');
+      
+      if (!isLoggedIn || isLoggedIn !== 'true') {
+        // User is not logged in, show login link and hide logout button and registration link
+        document.getElementById('logout-btn').style.display = 'none';
+        document.getElementById('login-link').style.display = 'inline';
+        document.getElementById('register-link').style.display = 'inline';
+      } else {
+        // User is logged in, hide login link and registration link, and show logout button
+        document.getElementById('logout-btn').style.display = 'inline';
+        document.getElementById('login-link').style.display = 'none';
+        document.getElementById('register-link').style.display = 'none';
+      }
+    };
+  </script>
+</head>
+<body>
+  <header>
+    <h1 style="font-size: 30px;padding-left: 100px;">Expense Tracker Manager</h1>
+    <nav class="nav-bar" >
+      <a href="index.html">Home</a>
+      <a href="view_expenses.html">View Expenses</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="edit_expenses.html">Edit Expenses</a>
+      <button id="logout-btn" style="display: none; border: none;">Logout</button>
+     
+    </nav>
+  </header>
+
+        <h2>Edit your records</h2>
         
-    </header>
-    <h2 >Edit your records</h2>
-   <!--   <button  class = "button" onclick="addRow()">Add Expenses</button>
-  <button onclick="addColumn()">Add Column</button>-->
-  <div class="container"> 
-    <form id="expense-form"> 
-    <div class="expense-date"> 
-        <label for="date">Date:</label>
-        <input type="date" id="date" required>
-    </div>
-        <input type="text" id="expense-name" placeholder="Expense Name" required /> 
-        <input type="number" id="expense-amount" placeholder="Amount" required />
+        <div class="container">
+            <form id="expense-form">
+                <div class="expense-date">
+                    <label for="date">Date:</label>
+                    <input type="date" id="date" required />
+                </div>
+                <input type="text" id="expense-name" placeholder="Expense Name" required />
+                <input type="number" id="expense-amount" placeholder="Amount" required />
+                <button type="submit" id="saved">
+                    <p id="saved_expense">SAVE</p>
+                </button>
+            </form>
 
-        <button type="submit" id="saved"> 
-            <p id="saved_expense">SAVE </p>
-          </button> 
-    </form> 
-    <div class="expense-table"> 
-        <table> 
-            <thead> 
-                <tr> 
-                    <th>Date</th>
-                    <th>Expense Name</th> 
-                    <th>Amount</th> 
-                    <th>Action</th>
-                   
-                </tr> 
-            </thead> 
-            <tbody id="expense-list"></tbody> 
-        </table> 
-        <div class="total-amount"> 
-            <strong>Total:</strong> 
-            <strong>KSH<span  id="total-amount">0</span> </strong>
-        </div> 
-    </div> 
-</div> 
+            <div class="expense-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Expense Name</th>
+                            <th>Amount</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="expense-list"></tbody>
+                </table>
+                <div class="total-amount">
+                    <strong>Total:</strong>
+                    <strong>KSH <span id="total-amount">0</span></strong>
+                </div>
+            </div>
+        </div>
 
-    <script src="js/edit.js"> </script>
-   
-    
-</body>
+        <script src="js/edit.js"></script>
+        <script src="js/view.js"></script>
+        <script src="js/logout.js"></script>
+    </body>
 </html>

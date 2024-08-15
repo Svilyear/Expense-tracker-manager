@@ -1,4 +1,4 @@
-// Get form, expense list, and total amount elements
+// Get form, expense list, total amount elements
 const expenseForm = document.getElementById("expense-form");
 const expenseList = document.getElementById("expense-list");
 const totalAmountElement = document.getElementById("total-amount");
@@ -11,7 +11,7 @@ let editIndex = -1;
 
 // Function to fetch expenses from the server
 function fetchExpenses() {
-    fetch('/api/expenses')
+    fetch('http://localhost:3000/api/expenses')
         .then(response => response.json())
         .then(data => {
             expenses = data;
@@ -33,12 +33,12 @@ function renderExpenses() {
         totalAmount += parseFloat(expense.amount);
 
         const row = document.createElement('tr');
-       row.innerHTML = `
+        row.innerHTML = `
             <td>${expense.date}</td>
-      <td>${expense.name}</td>
-    <td>${expense.amount}</td>
-  <td>
-     <button class="edit-btn" data-id="${index}">Edit</button>
+            <td>${expense.name}</td>
+            <td>${expense.amount}</td>
+            <td>
+                <button class="edit-btn" data-id="${index}">Edit</button>
                 <button class="delete-btn" data-id="${index}">Delete</button>
             </td>
         `;
@@ -77,7 +77,7 @@ function addOrUpdateExpense(event) {
 
     if (editIndex >= 0) {
         // Update existing expense on the server
-        fetch(`/api/expenses/${expenses[editIndex].id}`, {
+        fetch(`http://localhost:3000/api/expenses/${expenses[editIndex].id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -94,7 +94,7 @@ function addOrUpdateExpense(event) {
         .catch(error => console.error('Error updating expense:', error));
     } else {
         // Add new expense to the server
-        fetch('/api/expenses', {
+        fetch('http://localhost:3000/api/expenses', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -125,7 +125,7 @@ function deleteExpense(event) {
         // Confirm deletion
         if (confirm("Are you sure you want to delete this expense?")) {
             // Delete expense from the server
-            fetch(`/api/expenses/${expenses[expenseIndex].id}`, {
+            fetch(`http://localhost:3000/api/expenses/${expenses[expenseIndex].id}`, {
                 method: 'DELETE'
             })
             .then(() => {

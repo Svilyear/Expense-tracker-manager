@@ -1,0 +1,54 @@
+<!-- index.html -->
+<!DOCTYPE html> 
+<html> 
+
+<head> 
+	<title>Expenditure manager</title> 
+	<link rel="stylesheet"
+		type="text/css"
+		href="demo.css" /> 
+</head> 
+
+<body>
+	
+ 
+	<div class="container"> 
+        <button>
+         <a  href="login.html" >Login</a>
+        </button>
+		<h1>Expenditure Manager</h1> 
+      
+		<form id="expense-form"> <!--income-->
+		<div class="expense-date"> 
+			<label for="date">Date:</label>
+			<input type="date" id="date" required>
+		</div>
+			<input type="text" id="expense-name" placeholder="Expense Name" required /> 
+			<input type="number" id="expense-amount" placeholder="Amount" required /> 
+			<button type="submit"> 
+				Add Expense 
+			</button> 
+		</form> 
+		<div class="expense-table"> 
+			<table> 
+				<thead> 
+					<tr> 
+						<th>Date</th>
+						<th>Expense Name</th> 
+						<th>Amount</th> 
+						<th>Action</th>
+						<th>Action-Edit</th>
+					</tr> 
+				</thead> 
+				<tbody id="expense-list"></tbody> <!--expense-->
+			</table> 
+			<div class="total-amount"> 
+				<strong>Total:</strong> 
+				<strong>KSH<span  id="total-amount">0</span> </strong><!--balance-->
+			</div> 
+		</div> 
+	</div> 
+	<script  src="demo.js"></script> 
+</body> 
+
+</html>

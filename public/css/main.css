@@ -25,12 +25,12 @@ a.x ::before {height:15px;
 
 
 #container-register {
-    background-color: #FCFCFC;
+    background-color: #fcfcfc;
     position: relative;
     top: 20%;
     margin: auto;
     width: 340px;
-    height: 510px;
+    height: 530px;
     border-radius: 0.35em;
     box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.25);
     text-align: center;
