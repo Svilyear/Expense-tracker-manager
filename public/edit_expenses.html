@@ -8,49 +8,48 @@
   <link rel="stylesheet" href="css/index.css">
   <link rel="stylesheet" href="css/style.css">
   <script>
-    // Check if the user is logged in
     window.onload = function() {
       const isLoggedIn = localStorage.getItem('isLoggedIn');
       
-      if (!isLoggedIn || isLoggedIn !== 'true') {
-        // User is not logged in, show login link and hide logout button and registration link
-        document.getElementById('logout-btn').style.display = 'none';
-        document.getElementById('login-link').style.display = 'inline';
-        document.getElementById('register-link').style.display = 'inline';
-      } else {
-        // User is logged in, hide login link and registration link, and show logout button
-        document.getElementById('logout-btn').style.display = 'inline';
-        document.getElementById('login-link').style.display = 'none';
-        document.getElementById('register-link').style.display = 'none';
-      }
+      document.getElementById('logout-btn').style.display = isLoggedIn === 'true' ? 'inline' : 'none';
+      document.getElementById('login-link').style.display = isLoggedIn === 'true' ? 'none' : 'inline';
+      document.getElementById('register-link').style.display = isLoggedIn === 'true' ? 'none' : 'inline';
     };
   </script>
 </head>
 <body>
+  
   <header>
-    <h1 style="font-size: 30px;padding-left: 100px;">Expense Tracker Manager</h1>
-    <nav class="nav-bar" >
+    <h1>Expense Tracker Manager</h1>
+    <div id="user-info">
+      <img id="profile-picture-display" src="" alt="Profile Picture">
+      <span id="greeting-message"></span>
+    </div>
+    <nav class="nav-bar">
       <a href="index.html">Home</a>
       <a href="view_expenses.html">View Expenses</a>
       <a href="dashboard.html">Dashboard</a>
       <a href="edit_expenses.html">Edit Expenses</a>
-      <button id="logout-btn" style="display: none; border: none;">Logout</button>
-     
+      <a id="register-link" href="register.html">Registration</a>
+      <a id="login-link" href="login.html">Login</a>
+      <button id="logout-btn">Logout</button>
     </nav>
   </header>
 
+
         <h2>Edit your records</h2>
         
-        <div class="container">
+        <div class="containerA">
             <form id="expense-form">
                 <div class="expense-date">
+                  
                     <label for="date">Date:</label>
                     <input type="date" id="date" required />
                 </div>
-                <input type="text" id="expense-name" placeholder="Expense Name" required />
+                <input  type="text" id="expense-name" placeholder="Expense Name" required />
                 <input type="number" id="expense-amount" placeholder="Amount" required />
                 <button type="submit" id="saved">
-                    <p id="saved_expense">SAVE</p>
+                    <p id="saved_expense" >SAVE</p>
                 </button>
             </form>
 

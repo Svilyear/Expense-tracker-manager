@@ -8,52 +8,48 @@
   <link rel="stylesheet" href="css/index.css">
   <link rel="stylesheet" href="css/style.css">
   <script>
-    // Check if the user is logged in
     window.onload = function() {
       const isLoggedIn = localStorage.getItem('isLoggedIn');
       
-      if (!isLoggedIn || isLoggedIn !== 'true') {
-        // User is not logged in, show login link and hide logout button and registration link
-        document.getElementById('logout-btn').style.display = 'none';
-        document.getElementById('login-link').style.display = 'inline';
-        document.getElementById('register-link').style.display = 'inline';
-      } else {
-        // User is logged in, hide login link and registration link, and show logout button
-        document.getElementById('logout-btn').style.display = 'inline';
-        document.getElementById('login-link').style.display = 'none';
-        document.getElementById('register-link').style.display = 'none';
-      }
+      document.getElementById('logout-btn').style.display = isLoggedIn === 'true' ? 'inline' : 'none';
+      document.getElementById('login-link').style.display = isLoggedIn === 'true' ? 'none' : 'inline';
+      document.getElementById('register-link').style.display = isLoggedIn === 'true' ? 'none' : 'inline';
     };
   </script>
 </head>
 <body>
   <header>
-    <h1 style="font-size: 30px;padding-left: 100px;">Expense Tracker Manager</h1>
-    <nav class="nav-bar" >
+    <h1>Expense Tracker Manager</h1>
+    <div id="user-info">
+      <img id="profile-picture-display" src="" alt="Profile Picture">
+      <span id="greeting-message"></span>
+    </div>
+    <nav class="nav-bar">
       <a href="index.html">Home</a>
       <a href="view_expenses.html">View Expenses</a>
       <a href="dashboard.html">Dashboard</a>
       <a href="edit_expenses.html">Edit Expenses</a>
-      <button id="logout-btn" style="display: none; border: none;">Logout</button>
-
+      <a id="register-link" href="register.html">Registration</a>
+      <a id="login-link" href="login.html">Login</a>
+      <button id="logout-btn">Logout</button>
     </nav>
   </header>
-        <div class="container"> 
+        <div class="containerA"> 
             <form id="expense-form"> 
                 <div class="expense-date"> 
                     <h1>Expenditure Details</h1> 
                     <p>You can view all your Expenditure patterns here to help make informed decisions</p>
                 </div>
-                <label for="filter-dropdown">Filter by:</label>
-                <select id="filter-dropdown">
+                <label for="filter-dropdown" >Filter by:</label>
+                <select id="filter-dropdown"  style="width: 20%;">
                     <option value="all">All</option>
                     <option value="date">Date</option>
                     <option value="name">Expense Name</option>
                     <option value="amount">Amount</option>
-                </select>
-                <input type="text" id="filter-input" placeholder="Enter filter value">
-                <button type="submit" id="filter-button">
-                    <p id="filter_expense">Filter</p>
+                
+                <input type="text" id="filter-input"  style="width: 30%; margin: 10px;" placeholder="Enter filter value">
+                <button type="submit" id="filter-button" style="width: 20%;">
+                    <p id="filter_expense">Filter</p></select>
                 </button>
             </form> 
             <div class="expense-table"> 
@@ -73,6 +69,8 @@
                 </div> 
             </div> 
         </div> 
+    
+   
         <script src="js/view.js"></script>
         <script src="js/logout.js"></script>
     </body>

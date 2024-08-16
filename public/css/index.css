@@ -9,11 +9,11 @@
 * {
   padding: 0;
   margin: 0;
-  box-sizing: border-box;
+ 
 }
 
 body {
-  display: flex;
+  
   padding: 2rem;
   font-family: "Poppins", sans-serif;
   background-color: var(--bg-color);
@@ -29,6 +29,28 @@ h1 {
 h3, header, ul {
   margin-bottom: 0.5rem;
 }
+.container{
+background-color: #fcfcfc;
+    position: relative;
+    top: 20%;
+    margin-left: 350px;
+    width: 450px;
+    height: 30px;
+    border-radius: 0.35em;
+    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.25);
+
+}
+.containerA{
+  background-color: #fcfcfc;
+      position: relative;
+      top: 20%;
+      margin-left: 150px;
+      width: 750px;
+      height: 30px;
+      border-radius: 0.35em;
+      box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.25);
+  
+  }
 
 main {
   height: auto; /* Adjust height to auto for better responsiveness */
@@ -48,10 +70,17 @@ header {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-}
+  position:relative;
 
+}
+#profile-picture-display{
+  display: flex;
+
+
+}
 header div {
-  padding: 5px;
+  padding: 3px;
+  
 }
 
 header div:first-child {
@@ -75,19 +104,19 @@ header h5 {
 form {
   display: flex;
   flex-direction: column; /* Stack items vertically */
-  gap: 10px;
+ 
 }
 
 form input:not(#type),
 form button {
-  width: 100%;
-  padding: 10px;
+  width: 50%;
+  padding: 5px;
   border: 1px solid #ddd;
   border-radius: 5px;
   margin-bottom: 5px;
-  height: 42px;
+  height: 32px;
   font-family: "Poppins", sans-serif;
-  font-size: 1rem;
+  font-size: 0.8rem;
 }
 
 form button {
@@ -159,11 +188,11 @@ ul {
 }
 
 ul li {
-  display: flex;
+  display: inline-block;
   justify-content: space-between;
   align-items: flex-start;
   padding: 5px 10px;
-  position: relative;
+  
 }
 
 ul li:hover {
@@ -255,11 +284,11 @@ ul li:hover .action {
   background-color: #4CAF50; 
   border: none; 
   color: white; 
-  padding: 15px 32px; 
+  padding: 15px; 
   text-align: center; 
   text-decoration: none; 
-  display: inline-block;
-  font-size: 16px; 
+  display: flex;
+  font-size: 13px; 
   margin: 4px 2px; 
   cursor: pointer; 
   border-radius: 12px;
@@ -398,6 +427,7 @@ ul li:hover .action {
   }
 
   nav.nav-bar {
+    display: flex;
     flex-direction: column; /* Stack navigation items vertically */
   }
 
@@ -410,7 +440,7 @@ ul li:hover .action {
   }
 
   #view-expenses-button {
-    padding: 12px 24px; /* Adjust padding for smaller screens */
+    padding: 10px 20px; /* Adjust padding for smaller screens */
     font-size: 14px; /* Smaller font size for button */
   }
 }
@@ -429,11 +459,11 @@ ul li:hover .action {
   }
 
   form input, form button {
-    font-size: 0.75rem; /* Smaller font size for form elements */
+    font-size: 0.55rem; /* Smaller font size for form elements */
   }
 
   #view-expenses-button {
-    padding: 10px 20px; /* Adjust padding */
-    font-size: 12px; /* Smaller font size for button */
+    padding: 5px 15px; /* Adjust padding */
+    font-size: 9px; /* Smaller font size for button */
   }
 }
