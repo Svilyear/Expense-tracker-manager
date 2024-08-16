@@ -62,7 +62,7 @@ header div:first-child {
 header div:nth-child(n + 2) {
   flex-basis: 100%; /* Adjust to full width for better stacking on small screens */
   font-size: 1.25rem;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 header h5 {
@@ -377,6 +377,58 @@ ul li:hover .action {
   .action svg {
     width: 24px; /* Smaller SVG icons */
     height: 24px;
+  }
+
+  #view-expenses-button {
+    padding: 10px 20px; /* Adjust padding */
+    font-size: 12px; /* Smaller font size for button */
+  }
+}
+
+
+/* Media Queries for Mobile Devices */
+@media (max-width: 768px) {
+  body {
+    padding: 1rem; /* Reduce padding on smaller screens */
+  }
+
+  header h1 {
+    font-size: 1.25rem; /* Adjust font size for headers */
+  }
+
+  nav.nav-bar {
+    flex-direction: column; /* Stack navigation items vertically */
+  }
+
+  nav.nav-bar a, nav.nav-bar button {
+    margin: 10px 0;
+  }
+
+  form input, form button {
+    font-size: 0.875rem; /* Slightly smaller font size for form elements */
+  }
+
+  #view-expenses-button {
+    padding: 12px 24px; /* Adjust padding for smaller screens */
+    font-size: 14px; /* Smaller font size for button */
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 0.5rem; /* Further reduce padding */
+  }
+
+  header h1 {
+    font-size: 1rem; /* Smaller font size for headers */
+  }
+
+  nav.nav-bar a, nav.nav-bar button {
+    margin: 5px 0;
+  }
+
+  form input, form button {
+    font-size: 0.75rem; /* Smaller font size for form elements */
   }
 
   #view-expenses-button {
