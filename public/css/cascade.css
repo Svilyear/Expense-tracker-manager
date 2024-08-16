@@ -12,6 +12,12 @@ header {
   padding: 20px;
   text-align: center;
 }
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
 
 #user-info {
   display: flex;
@@ -54,6 +60,7 @@ header {
   flex-direction: column;
   justify-content: space-around;
   height: 25px;
+  
 }
 
 .hamburger-menu span {
@@ -125,24 +132,7 @@ button:hover {
   background-color: #45a049;
 }
 
-/* Expense Table Styles */
-.expense-table {
-  margin-top: 10px;
-  display: flex;
- 
-}
 
-table {
-  width: 100%;
- 
-  border-collapse: collapse;
-}
-
-table, th, td {
-  border: 1px solid #ddd;
-  padding: 10px;
-  text-align: left;
-}
 
 #view-expenses-button {
   margin-top: 20px;
@@ -203,6 +193,11 @@ footer p, footer a {
 
   .nav-links.show {
     display: flex;
+    background-color: whitesmoke;
+  align-items: flex-start;
+  
+  font-size: 18px;
+  font-weight: 400;
   }
 
   .container {
@@ -236,6 +231,35 @@ footer p, footer a {
   }
 }
 .total-amount{
-    font-size: 40px;
+    font-size: 20px;
     position:end;
 }
+.expense-table { 
+    width: 100%; 
+	border: 2px solid #ddd; 
+	border-radius: 8px; 
+	overflow: hidden; 
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	
+} 
+
+table { 
+	width: 100%;
+	border-collapse: collapse; 
+	border: 1px solid black;
+} 
+
+thead th { 
+	background-color: #b9f8f5; 
+	padding: 1px; 
+	text-align: left; 
+
+ 
+} 
+
+tbody td { 
+	padding: 1px; 
+	
+	border: 1px solid #ddd;
+
+} 
