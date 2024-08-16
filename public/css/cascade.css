@@ -95,7 +95,7 @@ header {
     transition: background-color 0.3s;
 }
 .container-form{
-    width: 75%;
+    width: 100%;
     align-items: center;
     margin: 10px;
 }
