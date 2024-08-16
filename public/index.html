@@ -8,30 +8,21 @@
   <link rel="stylesheet" href="css/index.css">
   <link rel="stylesheet" href="css/style.css">
   <script>
-    // Check if the user is logged in
     window.onload = function() {
       const isLoggedIn = localStorage.getItem('isLoggedIn');
       
-      if (!isLoggedIn || isLoggedIn !== 'true') {
-        // User is not logged in, show login link and hide logout button and registration link
-        document.getElementById('logout-btn').style.display = 'none';
-        document.getElementById('login-link').style.display = 'inline';
-        document.getElementById('register-link').style.display = 'inline';
-      } else {
-        // User is logged in, hide login link and registration link, and show logout button
-        document.getElementById('logout-btn').style.display = 'inline';
-        document.getElementById('login-link').style.display = 'none';
-        document.getElementById('register-link').style.display = 'none';
-      }
+      document.getElementById('logout-btn').style.display = isLoggedIn === 'true' ? 'inline' : 'none';
+      document.getElementById('login-link').style.display = isLoggedIn === 'true' ? 'none' : 'inline';
+      document.getElementById('register-link').style.display = isLoggedIn === 'true' ? 'none' : 'inline';
     };
   </script>
 </head>
 <body>
   <header>
-    <h1 style="font-size: 30px; padding-left: 100px;">Expense Tracker Manager</h1>
+    <h1>Expense Tracker Manager</h1>
     <div id="user-info">
-      <img id="profile-picture-display" src="" alt="Profile Picture" style="display: none; width: 50px; height: 50px;">
-      <span id="greeting-message" style="display: none;"></span>
+      <img id="profile-picture-display" src="" alt="Profile Picture">
+      <span id="greeting-message"></span>
     </div>
     <nav class="nav-bar">
       <a href="index.html">Home</a>
@@ -40,15 +31,13 @@
       <a href="edit_expenses.html">Edit Expenses</a>
       <a id="register-link" href="register.html">Registration</a>
       <a id="login-link" href="login.html">Login</a>
-      <button id="logout-btn" >Logout</button>
+      <button id="logout-btn">Logout</button>
     </nav>
   </header>
 
   <p>Track your expenses easily and efficiently using our simple APP.</p>
   
   <div class="container">
-    <!-- Profile Picture Upload Form -->
-   
     <form id="expense-form">
       <div class="expense-date">
         <label for="date">Date:</label>
@@ -56,30 +45,26 @@
       </div>
       <input type="text" id="expense-name" placeholder="Expense Name" required>
       <input type="number" id="expense-amount" placeholder="Amount" required>
-      <button type="submit" id="add-button">
-        <p id="add_expense">Add Transaction</p>
-      </button>
+      <button type="submit" id="add-button">Add Transaction</button>
     </form>
 
     <div>
       <table>    
         <tbody id="expense-list"></tbody>
       </table>
-
       <button id="view-expenses-button">
-        <p id="add_expense"><a href="view_expenses.html">VIEW HERE</a></p>
+        <a href="view_expenses.html">VIEW HERE</a>
       </button>
     </div>
     <hr>
   </div>
   
   <footer>
-    <a href="mailto:vitronicstech@gmail.com" target="_blank">Email Us</a> for more information.</p>
+    <a href="mailto:vitronicstech@gmail.com" target="_blank">Email Us</a> for more information.
     <p>&copy; 2024 Expense Tracker App. Made with LOVE.</p>
   </footer>
- 
+
   <script src="js/index.js"></script>
   <script src="js/logout.js"></script>
-
 </body>
 </html>

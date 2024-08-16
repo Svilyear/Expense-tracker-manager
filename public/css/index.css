@@ -7,7 +7,7 @@
 }
 
 * {
-  padding: auto;
+  padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
@@ -18,30 +18,24 @@ body {
   background-color: var(--bg-color);
   color: var(--text-color);
   background-image: url('./img/background.jpg');
-
-
 }
-
 
 h1 {
   text-align: center;
   font-size: 1.5rem;
 }
 
-h3,
-header,
-ul {
+h3, header, ul {
   margin-bottom: 0.5rem;
 }
 
 main {
- height: 620px;
-  max-width: 600px;
+  height: auto; /* Adjust height to auto for better responsiveness */
+  max-width: 100%; /* Allow the container to be responsive */
   margin: 1rem auto;
   background-color: #fff;
   padding: 1rem;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
-
 }
 
 header {
@@ -52,6 +46,7 @@ header {
   border-radius: 5px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 header div {
@@ -65,7 +60,7 @@ header div:first-child {
 }
 
 header div:nth-child(n + 2) {
-  flex-basis: 50%;
+  flex-basis: 100%; /* Adjust to full width for better stacking on small screens */
   font-size: 1.25rem;
   font-weight: 500;
 }
@@ -78,7 +73,7 @@ header h5 {
 
 form {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column; /* Stack items vertically */
   gap: 10px;
 }
 
@@ -114,7 +109,7 @@ form div:nth-child(-n + 2) {
 }
 
 form div:nth-child(n + 3) {
-  flex-basis: calc(50% - 5px);
+  flex-basis: 100%; /* Stack form elements vertically */
 }
 
 input#type {
@@ -135,7 +130,6 @@ input#type {
 .option span {
   width: 50%;
   text-align: center;
- 
   cursor: pointer;
   z-index: 2;
 }
@@ -153,6 +147,7 @@ input#type {
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
   transition: all 200ms;
 }
+
 input#type:checked ~ .option::before {
   left: 50%;
   background-color: #f5103a;
@@ -235,22 +230,17 @@ ul li:hover .action {
   color: #000;
 }
 
-.home-register{
+.home-register {
   margin: auto;
   padding: 20px;
   text-align: center;
- 
-  
-   
-    position: relative;
-    top: 20%;
-    margin-top:10px;
-    border-radius: 0.35em;
-    
-    text-align: center;
+  position: relative;
+  top: 20%;
+  margin-top: 10px;
+  border-radius: 0.35em;
 }
 
-.home-register button{
+.home-register button {
   background-color: #3abe41;
   border-radius: 4px;
   padding: 5px;
@@ -258,9 +248,8 @@ ul li:hover .action {
   cursor: pointer;
   border: none;
   box-shadow: #555;
-
-
 }
+
 #view-expenses-button {
   background-color: #4CAF50; 
   border: none; 
@@ -272,7 +261,7 @@ ul li:hover .action {
   font-size: 16px; 
   margin: 4px 2px; 
   cursor: pointer; 
-   border-radius: 12px;
+  border-radius: 12px;
   transition: background-color 0.3s; 
 }
 
@@ -291,4 +280,107 @@ ul li:hover .action {
 #view-expenses-button p {
   margin: 0; /* Remove default margin */
   padding: 0; /* Remove default padding */
+}
+
+/* Media Queries for Mobile Devices */
+@media (max-width: 768px) {
+  body {
+    padding: 1rem; /* Reduce padding on smaller screens */
+  }
+
+  h1 {
+    font-size: 1.25rem; /* Adjust font size for headers */
+  }
+
+  header {
+    flex-direction: column; /* Stack header items vertically */
+  }
+
+  header div {
+    flex-basis: 100%; /* Ensure full-width for each header section */
+  }
+
+  form {
+    width: 100%; /* Make form full-width */
+  }
+
+  form input:not(#type), form button {
+    font-size: 0.875rem; /* Slightly smaller font size for form elements */
+  }
+
+  .option {
+    padding: 8px; /* Adjust padding for smaller screens */
+  }
+
+  .option span {
+    font-size: 0.875rem; /* Smaller font size for option spans */
+  }
+
+  ul li {
+    flex-direction: column; /* Stack list items vertically */
+    align-items: stretch; /* Make list items full-width */
+    padding: 10px;
+  }
+
+  .action {
+    width: 40px; /* Smaller action button width */
+  }
+
+  .action svg {
+    width: 30px; /* Smaller SVG icons */
+    height: 30px;
+  }
+
+  #view-expenses-button {
+    padding: 12px 24px; /* Adjust padding for smaller screens */
+    font-size: 14px; /* Smaller font size for button */
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 0.5rem; /* Further reduce padding */
+  }
+
+  h1 {
+    font-size: 1rem; /* Smaller font size for headers */
+  }
+
+  header {
+    padding: 0.5rem; /* Reduce padding in header */
+  }
+
+  header div {
+    font-size: 1rem; /* Smaller font size in header */
+  }
+
+  form input:not(#type), form button {
+    font-size: 0.75rem; /* Smaller font size for form elements */
+  }
+
+  .option {
+    padding: 6px; /* Reduce padding */
+  }
+
+  .option span {
+    font-size: 0.75rem; /* Smaller font size for option spans */
+  }
+
+  ul li {
+    padding: 8px; /* Reduce padding for list items */
+  }
+
+  .action {
+    width: 30px; /* Even smaller action button width */
+  }
+
+  .action svg {
+    width: 24px; /* Smaller SVG icons */
+    height: 24px;
+  }
+
+  #view-expenses-button {
+    padding: 10px 20px; /* Adjust padding */
+    font-size: 12px; /* Smaller font size for button */
+  }
 }
