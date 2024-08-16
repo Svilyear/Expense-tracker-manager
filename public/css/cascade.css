@@ -6,13 +6,12 @@
 }
 
 /* Header Styles */
-
-  header {
-    background-color: #4CAF50;
-    color: white;
-    padding: 20px;
-    text-align: center;
-  }
+header {
+  background-color: #4CAF50;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
 
 #user-info {
   display: flex;
@@ -35,13 +34,10 @@
   position: relative;
 }
 
-.nav-links  {
+.nav-links {
   list-style: none;
   display: flex;
-  gap: 1px;
-  margin: 10px;
-  font-weight: 400;
-  font-size: 20px;
+  gap: 10px;
 }
 
 .nav-links a {
@@ -50,45 +46,59 @@
   padding: 10px;
   background-color: #333;
   border-radius: 5px;
-
-  
-}
-#logout-btn:hover{
-  text-decoration: underline;
- 
 }
 
 .hamburger-menu {
-  text-decoration:underline;
   display: none;
   cursor: pointer;
   flex-direction: column;
   justify-content: space-around;
   height: 25px;
- 
 }
 
-
 .hamburger-menu span {
-
-  display: inline-flexbox;
+  display: block;
   width: 30px;
   height: 3px;
   background-color: white;
-  
-}.hamburger-menu span:hover {
- 
-  text-decoration: underline;
-  
 }
 
 /* Container and Form Styles */
 .container {
   padding: 20px;
-  max-width: 500px;
   margin: auto;
 }
-
+.delete-btn { 
+    color: white; 
+    background-color: red; 
+    cursor: pointer; 
+    padding: 10px;
+    margin: 10px;
+    border: none;
+    border-radius: 3px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+} 
+.edit-btn { 
+    color: white; 
+    background-color: green; 
+    cursor: pointer; 
+    padding: 10px 10px;
+    margin: 10px;
+    border: none;
+    border-radius: 3px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+.container-form{
+    width: 75%;
+    align-items: center;
+    margin: 10px;
+}
 form {
   display: grid;
   gap: 15px;
@@ -117,11 +127,14 @@ button:hover {
 
 /* Expense Table Styles */
 .expense-table {
-  margin-top: 20px;
+  margin-top: 10px;
+  display: flex;
+ 
 }
 
 table {
   width: 100%;
+ 
   border-collapse: collapse;
 }
 
@@ -139,7 +152,7 @@ table, th, td {
   text-decoration: none;
   color: white;
   padding: 10px 20px;
-  
+ 
   border-radius: 5px;
 }
 
@@ -157,8 +170,17 @@ footer p, footer a {
   color: #333;
 }
 
-/* Media Queries */
+/* Media Queries for Mobile Devices */
 @media (max-width: 768px) {
+  header {
+    padding: 15px;
+    text-align: center;
+  }
+
+  #user-info {
+    flex-direction: column;
+  }
+
   .nav-bar {
     align-items: flex-start;
   }
@@ -170,16 +192,13 @@ footer p, footer a {
   .nav-links {
     display: none;
     flex-direction: column;
-    gap: 20px;
-    background-color: #45a049;
+    gap: 10px;
+    background-color: #4CAF50;
     position: absolute;
-    top: 50px;
+    top: 60px;
     left: 0;
     right: 0;
     padding: 10px;
-    font-weight: 600;
-    font-size: 20px;
-    
   }
 
   .nav-links.show {
@@ -193,4 +212,30 @@ footer p, footer a {
   form {
     grid-template-columns: 1fr;
   }
+
+  input, button {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .expense-table {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center; /* Center the table */
+  }
+
+  table {
+    width: 100%;
+    max-width: 90%; /* Reduce the table width for mobile */
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  footer {
+    padding: 10px;
+  }
+}
+.total-amount{
+    font-size: 40px;
+    position:end;
 }
